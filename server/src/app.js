@@ -17,7 +17,7 @@ app.get('/hello/:person', function (req, res) {
 })
 
  //get user by id
-app.get('/user/:userId', function (req, res) {
+app.get('/user/:userid', function (req, res) {
     res.send('ดูข้อมูลผู้ใช้งาน')
 })
 
