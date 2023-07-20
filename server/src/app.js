@@ -4,7 +4,7 @@ let bodyParser = require('body-parser')
 const app = express()
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extend: true}))
+app.use(bodyParser.urlencoded({ extend: true }))
 
 app.get('/status', function (req, res) {
     res.send('Hello nodejs server')
@@ -15,21 +15,32 @@ app.get('/hello/:person', function (req, res) {
     res.send('say hello with ' + req.params.person)
 })
 
- //get delete user
- app.delete('/user/:userid', function(req, res){
-    res.send('ลบข้อมูลผู้ใช้')
+//get user by id
+app.get('/user/:userId', function (req, res) {
+    res.send('ดูข้อมูลผู้ใช้งาน: ' + req.params.userId)
 })
 
- //get user by id
-app.get('/user/:userid', function (req, res) {
-    res.send('ดูข้อมูลผู้ใช้งาน')
-})
-
- //get all user
+//get all user
 app.get('/users', function (req, res) {
     res.send('เรียกข้อมูลผู้ใช้งานทั้งหมด')
 })
- 
+
+//creat user
+app.post('/user/', function (req, res) {
+    res.send('ทำการสร้างผู้ใช้งาน: ' + JSON.stringify(req.body))
+})
+
+//edit user
+app.put('/user/:userId', function (req, res) {
+    res.send('ทำการแก้ไขผู้ใช้งาน: '+ req.params.userId + ' : ' + 
+    JSON.stringify(req.body))
+})
+
+// delete user
+app.delete('/user/:userId', function (req, res) {
+    res.send('ลบข้อมูลผู้ใช้: ' + req.params.userId + ' : ' +
+    JSON.stringify(req.body))
+})
 
 let port = 8081
 app.listen(port, function () {
