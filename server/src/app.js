@@ -1,5 +1,5 @@
 let express = require('express')
-let 
+
 const app = express()
 
 app.get('/status', function (req, res) {
