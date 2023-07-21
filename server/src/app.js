@@ -6,6 +6,8 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extend: true }))
 
+require('./routes')(app)
+
 app.get('/status', function (req, res) {
     res.send('Hello nodejs server')
 })
@@ -25,7 +27,7 @@ app.get('/users', function (req, res) {
     res.send('เรียกข้อมูลผู้ใช้งานทั้งหมด')
 })
 
-//creat user
+//create user
 app.post('/user/', function (req, res) {
     res.send('ทำการสร้างผู้ใช้งาน: ' + JSON.stringify(req.body))
 })
