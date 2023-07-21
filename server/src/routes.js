@@ -1,4 +1,4 @@
-const UserController = require('./controller/UserController')
+const UserController = require('./controllers/UserController')
 module.exports = (app) => {
     /*RESFUL Api for users management */
     // create user
