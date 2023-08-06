@@ -11,16 +11,19 @@ const sequelize = new Sequelize(
     config.db.options
 )
 
-fs.readdiveSync(__dirname)
-  .filter(file) 
-    file !== 'index.js'
+fs.readdirSync(__dirname)
+    .filter((file) =>
+        file !== 'index.js'
+    )
 
-  .forEach(file) ;
-  {
-    const model = sequelize.import(path.join(__dirname, file)(sequelize.DataTypes))
-    db[model.name] = model
-  }
-    db.sequelize = Sequelize
-    db.sequelize = Sequelize
+    .forEach((file) => {
 
-    module.exports = db
+        const model = sequelize.import(path.join(__dirname, file))
+        db[model.name] = model
+
+    })
+
+db.Sequelize = Sequelize
+db.Sequelize = Sequelize
+db ={}
+module.exports = db

@@ -1,5 +1,8 @@
 let express = require('express')
 let bodyParser = require('body-parser')
+const { sequelize } = require('./models')
+
+const config = require('./config/config')
 
 const app = express()
 
@@ -34,17 +37,25 @@ app.post('/user/', function (req, res) {
 
 //edit user
 app.put('/user/:userId', function (req, res) {
-    res.send('ทำการแก้ไขผู้ใช้งาน: '+ req.params.userId + ' : ' + 
-    JSON.stringify(req.body))
+    res.send('ทำการแก้ไขผู้ใช้งาน: ' + req.params.userId + ' : ' +
+        JSON.stringify(req.body))
 })
 
 // delete user
 app.delete('/user/:userId', function (req, res) {
     res.send('ลบข้อมูลผู้ใช้: ' + req.params.userId + ' : ' +
-    JSON.stringify(req.body))
+        JSON.stringify(req.body))
+})
+ 
+//
+app.post('./hello',function(reeq, res){
+ res.send('OK you post - '+ reeq.body.name)
 })
 
-let port = 8081
-app.listen(port, function () {
-    console.log('server running on ' + port)
+let port = process.env.PORT || config.port
+
+sequelize.sync({ force: false }).then(() =>{
+    app.listen(port, function () {
+        console.log('server running on ' + port)
+    })
 })
