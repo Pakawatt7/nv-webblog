@@ -1,5 +1,5 @@
-export default (Sequelize,DataTypes) =>{
-    const User = Sequelize.define('User',{
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User', {
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         name: DataTypes.STRING,
@@ -7,6 +7,5 @@ export default (Sequelize,DataTypes) =>{
         status: DataTypes.STRING,
         type: DataTypes.STRING
     })
-
     return User
-}
+}   
